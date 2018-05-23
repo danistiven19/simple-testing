@@ -1,0 +1,33 @@
+<h1>People!</h1>
+  <form [formGroup]="myForm">
+    <input class="form-control" type="text" [formControl]="searchTerm" placeholder="Search"/>
+  </form>
+<div class="people-view" *ngIf="(peopleResult$ | async) as peopleResponse">
+<div *ngIf="!(isDataLoading$ | async)">
+	<table class="people-table table">
+		<thead class="thead">
+			<th class="th">Name</th>
+			<th class="th">height</th>
+			<th class="th">Hair Color</th>
+			<th class="th">Skin Color</th>
+		</thead>
+		<tbody>
+			<tr class="tr" *ngFor="let person of peopleResponse?.results">
+        <td>{{person?.name}}</td>
+        <td>{{person?.height}}</td>
+        <td>{{person?.hair_color}}</td>
+        <td>{{person?.skin_color}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		Data:
+		<pre>{{peopleResponse | json }}</pre>
+	</div>
+</div>
+</div>
+<div *ngIf="(isDataLoading$ | async)">
+  <div class="alert alert-danger" role="alert">
+    Loading ...
+  </div>
+</div>

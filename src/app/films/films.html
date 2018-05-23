@@ -1,0 +1,32 @@
+<div class="films-view" *ngIf="(filmsResult$ | async) as filmResponse">
+  <div *ngIf="!isDataLoading">
+	<h1>Films!</h1>
+	<table class="table">
+		<thead class="thead">
+      <th class="th">Ranked</th>
+			<th class="th">Title</th>
+			<th class="th">Episode</th>
+			<th class="th">Director</th>
+			<th class="th">Producer</th>
+		</thead>
+		<tbody>
+			<tr class="tr" *ngFor="let film of filmResponse">
+        <td><span class="glyphicon glyphicon-star" *ngIf="film?.ranked"></span></td>
+        <td>{{film?.title}}</td>
+        <td>{{film?.episode_id}}</td>
+        <td>{{film?.director}}</td>
+        <td>{{film?.producer}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		Data:
+		<pre>{{filmResponse | json }}</pre>
+	</div>
+  </div>
+</div>
+<div *ngIf="isDataLoading">
+  <div class="alert alert-danger" role="alert">
+    Loading ...
+  </div>
+</div>
