@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { PeopleService } from './../shared/services/people.service';
 import { GlobalService } from './../shared/services/global.service';
-import 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'peoples',
@@ -18,19 +18,19 @@ export class PeopleComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject();
   searchTerm = new FormControl();
 
-  constructor(private peopleService: PeopleService, private globalService: GlobalService) {
-    this.searchTerm.valueChanges
-      .debounceTime(200)
-      .takeUntil(this.destroy$)
-      .subscribe(($event: string) => {
-        return this.peopleResult$ = this.peopleService.searchPeople($event);
-      });
-
-    this.isDataLoading$ = this.globalService.isDataLoadingObservable$;
-  }
+  constructor(private peopleService: PeopleService, private globalService: GlobalService) {}
 
   ngOnInit() {
+    this.searchTerm.valueChanges.pipe(
+      debounceTime(200),
+      takeUntil(this.destroy$)
+    )
+    .subscribe(($event: string) => {
+      return this.peopleResult$ = this.peopleService.searchPeople($event);
+    });
+
     this.peopleResult$ = this.peopleService.getPeople();
+    this.isDataLoading$ = this.globalService.isDataLoadingObservable$;
     this.myForm = new FormGroup ({
       searchTerm: this.searchTerm
     });
