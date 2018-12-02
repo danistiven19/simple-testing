@@ -55,6 +55,24 @@ describe('FilmsComponent', () => {
     });
   });
 
+  describe('mapFilms()', () => {
+    it('Should do nothing when there is not film selected', () => {
+      
+    });
+
+    it('Should calculate the average (R10)', () => {
+      
+    });
+
+    it('Should get the number of votes for the selected film (R11)', () => {
+      
+    });
+
+    it('Should set most popular when there are more than 5 votes and the average is equals to 3 (R12)', () => {
+      
+    });
+  });
+
   describe('ngOnDestroy()', () => {
     it('Should trigger the detroy$ stream and then unsusbscribe', () => {
       filmsComponentInstance.destroy$ = new Subject();

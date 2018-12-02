@@ -5,5 +5,8 @@
   <li [ngClass]="{active: selectedRoute === 'films'}">
     <a routerLink="films" (click)="onNavItemSelected('films')">Films</a>
   </li>
+  <li [ngClass]="{active: selectedRoute === 'ranking'}">
+      <a routerLink="ranking" (click)="onNavItemSelected('ranking')">Ranking</a>
+    </li>
 </ul>
 <router-outlet></router-outlet>

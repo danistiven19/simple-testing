@@ -1,0 +1,67 @@
+*Ranking Tab Requirements*
+
+1. Given The user is in the ranking Tab
+And there is atleast one film
+Then the user should see a dropdown of films
+Then the user should see a column called Ranking with disabled options: 
+*one star*
+*two stars*
+*three stars*
+And a button called 'Save' disabled
+
+2. Given The user is in the ranking Tab
+And the user is seeing the dropdown of films
+And the user selects a film from the dropdown
+And the selected film has as producer 'Rick McCallum'
+Then the options should be disabled and mark with three stars votes
+
+3. Given The user is in the ranking Tab
+And the user is seeing the dropdown of films
+And the user selects a film from the dropdown
+And the selected film has NOT as producer 'Rick McCallum'
+Then the user should be able to rank the film
+
+4. Given The user is in the ranking Tab
+And the user is seeing the dropdown of films
+And the user selects a film from the dropdown
+And the selected film has NOT as producer 'Rick McCallum'
+Then 'Save' button should continue disabled
+
+5. Given The user is in the ranking Tab
+And the user is seeing the dropdown of films
+And the user ranked at least one film
+Then 'Save' button should be enabled
+
+6. Given The user is in the ranking Tab
+And the user saves the ranking
+Then the calification is stored
+
+7.Given The user is in the ranking Tab
+And the user clicks on save
+Then the calification is saved
+And a message disaplyed saying 'Vote saved'
+
+8.Given The user is in the ranking Tab
+And the user clicks on save
+Then the calification is not saved
+And a message disaplyed saying 'The vote could not be saved'
+
+9. Given The user is in the ranking Tab
+And the user save the ranking was successfully saved
+Then the selected film and number of stars are cleared out
+
+10. Given The user is in the films Tab
+And there is atleast a film in the list
+Then should display a column called 'Ranking' with the average of all the rankings saved
+
+11. Given The user is in the films Tab
+And there is atleast a film in the list
+Then should display a column called 'Ranking' with the number of votes saved
+
+12. Given The user is in the films Tab
+And there is atleast a film in the list
+And the ranking and number of votes showed
+And there are more than 5 votes and all them are three stars
+Then the user should see 'Most Popular' instead of stars
+
+
