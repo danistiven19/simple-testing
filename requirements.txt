@@ -3,7 +3,7 @@
 1. Given The user is in the ranking Tab
 And there is atleast one film
 Then the user should see a dropdown of films
-Then the user should see a column called Ranking with disabled options: 
+And the user should see a column called Ranking with disabled options: 
 *one star*
 *two stars*
 *three stars*
